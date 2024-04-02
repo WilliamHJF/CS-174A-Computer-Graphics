@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('/assets/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.collapsed {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+
+.menu-holder-class {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(0, 0, 0, 75%);
+    width: 500px;
+    height: 500px;
+    padding: 0rem 2rem 2rem;
+    border-radius: 15px;
+    border: 5px solid rgb(29, 53, 200);
+
+    color: rgb(230, 57, 70);
+    font-family: Roboto;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    margin: 0;
+}
+
+h3 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+}
+
+body {
+    background-size:100% 100%;
+    height:100%;
+    width:100%;
+    background-color: black;
+}
+
+.bg {
+    background-image:url('assets/space-bg.gif');
+}
+
+.btn {
+    height: 60px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.8s ease;
+    position: relative;
+    border: 2px solid #111;
+    margin: 0 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.btn::before,
+.btn::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+}
+
+.bttn {
+    padding-top: 4rem;
+    border: none;
+}
+
+.bttn:before,
+.bttn:after {
+    border: 5px solid rgb(29, 53, 200);
+    transition: all 100ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.bttn:hover:after {
+    width: 150px;
+    height: 150px;
+    animation: anim7a 3s infinite linear;
+    background-color: rgb(29, 53, 87,30%);
+}
+
+.bttn:hover:before {
+    width: 150px;
+    height: 150px;
+    animation: anim7b 3s infinite linear;
+}
+
+@keyframes anim7a {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes anim7b {
+    from {
+        transform: rotate(0.125turn);
+    }
+    to {
+        transform: rotate(1.125turn);
+    }
+}

@@ -1,0 +1,108 @@
+<!-- Graphics Example Code.
+    index.html - The web page document containing the canvas (drawing surface).  It launches your JavaScript files.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="assets/fav.ico" rel="icon">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Tiny Graphics</title>
+</head>
+<body class="bg" >
+<!-- Begin typing your web page here. -->
+<!-- The following code embeds a WebGL canvas panel, loads certain scene(s), and displays panel(s) of their controls.-->
+<div class="canvas-widget" id="main-canvas">
+    <div class="menu-holder-class visible" id="menu-holder">
+        <div class="menu">
+            <h1>SAILING THE SPECTRUM</h1>
+            <h2>CS 174A Final Project</h2>
+            <div class="btn bttn" onclick="loadScript()">
+                <h3>GO</h3>
+            </div>
+        </div>
+    </div>
+    <div class="menu-holder-class collapsed" id="game_over">
+        <div class="menu">
+            <div id="stats">
+                <h1>GAME OVER</h1>
+            </div>
+            <div onclick="restart()">
+                <h3>BACK TO MENU</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HTML file -->
+
+<div id="script-container" class="collapsed">
+    <!-- The script will be added here dynamically -->
+</div>
+
+<script>
+    // loadScript()
+    let flag = 0;
+    function restart() {
+        location.reload();
+    }
+
+    function gameover(scoreVar) {
+        document.getElementById('script-container').classList.add('collapsed');
+        document.getElementById('script-container').classList.remove('visible');
+        const canvasElement = document.querySelector('canvas');
+        const controlsWidget = document.querySelector('.controls-widget');
+        const text = document.querySelector('.text-widget');
+        const code = document.querySelector('.code-widget');
+
+        if (canvasElement && canvasElement.parentNode) {
+            canvasElement.parentNode.removeChild(canvasElement);
+        }
+        if (controlsWidget && controlsWidget.parentNode) {
+            controlsWidget.parentNode.removeChild(controlsWidget);
+        }
+        if (text && text.parentNode) {
+            text.parentNode.removeChild(text);
+        }
+        if (code && code.parentNode) {
+            code.parentNode.removeChild(code);
+        }
+
+        const menuHolder = document.getElementById('game_over');
+        document.body.appendChild(menuHolder);
+        document.getElementById('game_over').classList.remove('collapsed');
+        document.getElementById('game_over').classList.add('visible');
+        document.body.classList.add('bg');
+
+        if (!flag) {
+            const h1Element = document.createElement('h3');
+            h1Element.textContent = `SCORE: ${scoreVar}`;
+            document.getElementById('stats').appendChild(h1Element);
+            flag = 1;
+        }
+    }
+
+    function loadScript() {
+        const scriptElement = document.createElement('script');
+        scriptElement.type = 'module';
+        scriptElement.textContent = `
+      // ********************* THE ENTRY POINT OF YOUR WHOLE PROGRAM STARTS HERE zzf*********************
+      // Indicate which element on the page you want the Canvas_Widget to replace with a 3D WebGL area:
+      const element_to_replace = document.querySelector("#main-canvas");
+      import {Main_Scene, Additional_Scenes, Canvas_Widget} from './main-scene.js';
+      // Import the file that defines a scene.
+      const scenes = [Main_Scene, ...Additional_Scenes].map(scene => new scene());
+      // This line creates your scene.
+      new Canvas_Widget(element_to_replace, scenes);
+    `;
+        document.getElementById('script-container').appendChild(scriptElement);
+        document.getElementById('script-container').classList.remove('collapsed');
+
+        // Collapse the menu-holder div
+        document.getElementById('menu-holder').classList.remove('visible');
+        document.getElementById('menu-holder').classList.add('collapsed');
+        document.body.classList.remove('bg');
+    }
+</script>
+
+</body>
+</html>
