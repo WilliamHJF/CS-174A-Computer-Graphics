@@ -13,4 +13,7 @@
 - **Maneuvering**: Use keyboard or joystick to steer the spaceship.
 - **Speed Adjustment**: Keys to accelerate or decelerate the drop rate of items.
 
+## Guidance
+-- Run "index.html"
+
 Enjoy navigating through the galactic spectrum and set high scores in "Sailing The Spectrum"!
