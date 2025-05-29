@@ -105,7 +105,7 @@ Sailing-The-Spectrum/
 
   - ⚽ Ball: +2 points
 
-- Avoid hitting the spiky ball – it ends the game!
+- Avoid hitting the obstacle – it ends the game!
 
 ---
 
